@@ -66,7 +66,7 @@ void UniqueRand(char arr[], const int n);
 void Search(int arr[], const int n);
 void Search(double arr[], const int n);
 void Search(char arr[], const int n);
-
+void Search(char arr[], const int n, int number_of_shifts);
 //#define ARRAYS_1
 #define ARRAYS_2
 
@@ -737,5 +737,33 @@ void Search(char arr[], const int n)
 		}
 		//if (count)printf("element %i repeatred %i times\n", arr[i], std::cout);
 		if (count)std::cout << "Element: " << arr[i] << " repeated " << count << " times." << std::endl;
+	}
+}
+void Search(char arr[], const int n, int number_of_shifts)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool met_before = false;
+			
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; l < (k == i ? j : COLS); l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						met_before = true;
+						break;
+					}
+				}
+			}
+			if (met_before)continue;
+			{
+				int count = 0;
+				for
+			}
+		}
+
 	}
 }
