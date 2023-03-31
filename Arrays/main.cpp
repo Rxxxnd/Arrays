@@ -4,7 +4,6 @@
 const int ROWS = 3;
 const int COLS = 4;
 
-
 //----------- protos --------------
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
