@@ -1,8 +1,6 @@
 #include <iostream>
 #include <Windows.h>
 
-//Hello GitHub
-
 const int ROWS = 3;
 const int COLS = 4;
 
