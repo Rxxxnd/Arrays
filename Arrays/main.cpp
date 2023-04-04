@@ -1,14 +1,14 @@
 #include <iostream>
 #include <Windows.h>
 
-const int ROWS = 3;
-const int COLS = 4;
+const int ROWS = 5;
+const int COLS = 8;
 
 //----------- protos --------------
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 256);
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
 void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
@@ -59,13 +59,17 @@ void shiftRight(char arr[], const int n, int number_of_shifts);
 void UniqueRand(int arr[], const int n);
 void UniqueRand(double arr[], const int n);
 void UniqueRand(char arr[], const int n);
-//void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
+void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void UniqueRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Search(int arr[], const int n);
 void Search(double arr[], const int n);
 void Search(char arr[], const int n);
-void Search(char arr[], const int n, int number_of_shifts);
+void Search(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+void Search(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+void Search(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 256);
+
 //#define ARRAYS_1
 #define ARRAYS_2
 
@@ -126,7 +130,8 @@ void main()
 	
 	Sleep(200);
 	int i_arr_2[ROWS][COLS];
-	FillRand(i_arr_2, ROWS, COLS);
+	FillRand(i_arr_2, ROWS, COLS, 0, 100);
+	Search(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 
 	Sleep(200);
@@ -150,8 +155,16 @@ void main()
 	std::cout << "\nSorted array: " << std::endl;
 	Sort(d_arr_2, ROWS, COLS);
 	Print(d_arr_2, ROWS, COLS);
-
 	
+	std::cout << "\n-------------------------\n" << std::endl;
+	std::cout << "Unique random array: \n" << std::endl;
+	UniqueRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	
+	std::cout << "\nSorted unique random array: " << std::endl;
+	Sort(d_arr_2, ROWS, COLS);
+	Print(d_arr_2, ROWS, COLS);
+
 }
 
 //================Functions================== 
@@ -177,13 +190,13 @@ void FillRand(char arr[], const int n, int minRand, int maxRand)
 		arr[i] = rand() % (maxRand - minRand) + minRand;
 	}
 }
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand() % 100;
+			arr[i][j] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
 }
@@ -656,6 +669,92 @@ void UniqueRand(char arr[], const int n)
 		}
 	}
 }
+void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique;
+			do
+            {
+				arr[i][j] = rand() % (ROWS * COLS);
+				unique = true; //supposing that number is uniaue
+
+				for (int k = 0; k <= i; k++)
+				{
+					for (int l = 0; l < (k == i ? j : COLS); l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
+	}
+}
+void UniqueRand(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique;
+			do
+			{
+				arr[i][j] = rand() % (ROWS * COLS);
+				unique = true;
+
+				for (int k = 0; k <= i; k++)
+				{
+					for (int l = 0; l < (k == i ? j : COLS); l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			}
+				while (!unique);
+		}
+	}
+
+}
+void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique;
+			do
+			{
+				arr[i][j] = rand() % (ROWS * COLS);
+				unique = true;
+
+				for (int k = 0; k <= i; k++)
+				{
+					for (int l = 0; l < (k == i ? j : COLS); l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
+	}
+}
 
 //---------------Search--------------------
 void Search(int arr[], const int n)
@@ -738,14 +837,13 @@ void Search(char arr[], const int n)
 		if (count)std::cout << "Element: " << arr[i] << " repeated " << count << " times." << std::endl;
 	}
 }
-void Search(char arr[], const int n, int number_of_shifts)
+void Search(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			bool met_before = false;
-			
+			int met_before = false;  // met before or not
 			for (int k = 0; k <= i; k++)
 			{
 				for (int l = 0; l < (k == i ? j : COLS); l++)
@@ -756,13 +854,88 @@ void Search(char arr[], const int n, int number_of_shifts)
 						break;
 					}
 				}
+				if (met_before)continue;
 			}
-			if (met_before)continue;
+			int count = 0;  
+			for (int k = i; k < ROWS; k++)
 			{
-				int count = 0;
-				for
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						count++;
+					}
+				}
 			}
+			if(count)printf("Value %i repeated %i times\n", arr[i][j], count);								  
 		}
-
+	}
+}
+void Search(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			int met_before = false;
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; l < (k == i ? j : COLS); l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						met_before = true;
+						break;
+					}
+				}
+				if (met_before)continue;
+			}
+			int count = 0;
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						count++;
+					}
+				}
+			}
+			if (count)printf("Value %i repeated %i times\n", arr[i][j], count);
+		}
+	}
+}
+void Search(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			int met_before = false;
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; l < (k == i ? j : COLS); l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						met_before = true;
+						break;
+					}
+				}
+				if (met_before)continue;
+			}
+			int count = 0;
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						count++;
+					}
+				}
+			}
+			if (count)printf("Value %i repeated %i times\n", arr[i][j], count);
+		}
 	}
 }
