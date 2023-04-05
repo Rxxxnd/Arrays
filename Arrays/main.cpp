@@ -43,10 +43,16 @@ void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS);
    int minValue(const int arr[], const int n);
 double minValue(double arr[], const int n);
   char minValue(char arr[], const int n);
+   int minValue(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double minValue(double arr[ROWS][COLS], const int ROWS, const int COLS);
+  char minValue(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
    int maxValue(const int arr[], const int n);
 double maxValue(double arr[], const int n);
   char maxValue(char arr[], const int n);
+   int maxValue(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double maxValue(double arr[ROWS][COLS], const int ROWS, const int COLS);
+  char maxValue(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n, int number_of_shifts);
 void shiftLeft(double arr[], const int n, int number_of_shifts);
@@ -87,7 +93,7 @@ void main()
 	std::cout << "\nAverage of array: " << Avg(arr, n) << std::endl;
 	std::cout << "\nMin element of array: " << minValue(arr, n) << std::endl;
 	std::cout << "\nMax elemnts of array: " << maxValue(arr, n) << std::endl;
-	
+
 	std::cout << "\nSearching for identical elements of array: " << std::endl;
 	Search(arr, n);
 	Print(arr, n);
@@ -95,20 +101,20 @@ void main()
 	std::cout << "\nSorted array: " << std::endl;
 	Sort(arr, n);
 	Print(arr, n);
-/*  int number_of_shifts;
-	std::cout << "\nEnter shifting times: "; std::cin >> number_of_shifts;
-	shiftLeft(arr, n, number_of_shifts);
-	Print(arr, n);
-	shiftRight(arr, n, number_of_shifts);
-	Print(arr, n);	
-*/
+	/*  int number_of_shifts;
+		std::cout << "\nEnter shifting times: "; std::cin >> number_of_shifts;
+		shiftLeft(arr, n, number_of_shifts);
+		Print(arr, n);
+		shiftRight(arr, n, number_of_shifts);
+		Print(arr, n);
+	*/
 	//const int SIZE = 10;
 	//double d_arr[SIZE];
 	//FillRand(d_arr, SIZE);
 	//Print(d_arr, SIZE);
 	//FillRand(c_arr, SIZE);
 	//Print(c_arr, SIZE);
-    //double sum[SIZE];
+	//double sum[SIZE];
 	//Print(d_arr, SIZE);
 	//char sum[SIZE];
 	//Print(c_arr, SIZE);
@@ -127,7 +133,7 @@ void main()
 
 
 #endif // ARRAYS_1 
-	
+
 	Sleep(200);
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS, 0, 100);
@@ -139,7 +145,7 @@ void main()
 	double d_arr_2[ROWS][COLS];
 	FillRand(d_arr_2, ROWS, COLS);
 	Print(d_arr_2, ROWS, COLS);
-	
+
 	Sleep(200);
 	std::cout << std::endl;
 	char c_arr_2[ROWS][COLS];
@@ -155,18 +161,16 @@ void main()
 	std::cout << "\nSorted array: " << std::endl;
 	Sort(d_arr_2, ROWS, COLS);
 	Print(d_arr_2, ROWS, COLS);
-	
+
 	std::cout << "\n-------------------------\n" << std::endl;
 	std::cout << "Unique random array: \n" << std::endl;
 	UniqueRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-	
+
 	std::cout << "\nSorted unique random array: " << std::endl;
 	Sort(d_arr_2, ROWS, COLS);
 	Print(d_arr_2, ROWS, COLS);
-
 }
-
 //================Functions================== 
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
@@ -398,6 +402,42 @@ double minValue(double arr[], const int n)
 	}
 	return min;
 }
+   int minValue(int arr[ROWS][COLS], const int ROWS, const int COLS)
+  {
+	  int min = 0;
+	  for (int i = 0; i < ROWS; i++)
+	  {
+		  for (int j = 0; j < COLS; j++)
+		  {
+		   if (arr[i][j] < min)min = arr[i][j];
+		  }
+	  }
+	  return min;
+  }
+double minValue(double arr[ROWS][COLS], const int ROWS, const int COLS)
+ {
+	 double min = 0;
+	 for (int i = 0; i < ROWS; i++)
+	 {
+		 for (int j = 0; j < COLS; j++)
+		 {
+			 if (arr[i][j] < min)min = arr[i][j];
+		 }
+	 }
+	 return min;
+ }
+  char minValue(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	char min = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] < min)min = arr[i][j];
+		}
+	}
+	return min;
+}
 //----------------Max------------------------
    int maxValue(const int arr[], const int n)
 {
@@ -426,6 +466,42 @@ double maxValue(double arr[], const int n)
 	}
 	return max;
 }
+   int maxValue(int arr[ROWS][COLS], const int ROWS, const int COLS)
+ {
+  int max = 0;
+  for (int i = 0; i < ROWS; i++)
+  {
+	  for(int j = 0; j < COLS; j++)
+	  {
+		  if (arr[i][j] > max)max = arr[i][j];
+	  }
+  }
+  return max;
+}
+double maxValue(double arr[ROWS][COLS], const int ROWS, const int COLS)
+  {
+	  double max = 0;
+	  for (int i = 0; i < ROWS; i++)
+	  {
+		  for (int j = 0; j < COLS; j++)
+		  {
+			  if (arr[i][j] > max)max = arr[i][j];
+		  }
+	  }
+	  return max;
+  }
+  char maxValue(char arr[ROWS][COLS], const int ROWS, const int COLS)
+  {
+	  char max = 0;
+	  for (int i = 0; i < ROWS; i++)
+	  {
+		  for (int j = 0; j < COLS; j++)
+		  {
+			  if (arr[i][j] > max)max = arr[i][j];
+		  }
+	  }
+	  return max;
+  }
 //---------------Sorting----------------------
 void Sort(int arr[], const int n)
 {
@@ -584,6 +660,7 @@ void shiftLeft(char arr[], const int n, int number_of_shifts)
 		arr[n - 1] = temp;
 	}
 }
+
 //--------------Shift-R--------------------
 void shiftRight(int arr[], const int n, int number_of_shifts)
 {
@@ -867,7 +944,7 @@ void Search(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, in
 					}
 				}
 			}
-			if(count)printf("Value %i repeated %i times\n", arr[i][j], count);								  
+			if (count)printf("Value %i repeated %i times\n", arr[i][j], count);
 		}
 	}
 }
