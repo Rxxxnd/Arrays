@@ -22,6 +22,7 @@ void Print(char arr[ROWS][COLS], const int ROWS, const int COLS);
    int Sum(const int arr[], const int n);
 double Sum(double arr[], const int n);
   char Sum(char arr[], const int n);
+
    int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
    int Sum(double arr[ROWS][COLS], const int ROWS, const int COLS);
    int Sum(char arr[ROWS][COLS], const int ROWS, const int COLS);
@@ -313,6 +314,7 @@ double Sum(double arr[], const int n)
 	}
 	return sum;
 }
+
    int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	int sum = 0;
