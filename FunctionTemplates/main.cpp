@@ -17,7 +17,7 @@ template <typename T> T minValueIn(const T arr[], const int n);
 template <typename T> T maxValueIn(const T arr[], const int n);
 template <typename T> void Sort(T arr[], const int n);
 template <typename T> void shiftLeft(T arr[], const int n, int number_of_shifts);
-//template <typename T> void shiftRight(T arr[], const int n, int number_of_shifts);
+template <typename T> void shiftRight(T arr[], const int n, int number_of_shifts);
 
 void main()
 {
