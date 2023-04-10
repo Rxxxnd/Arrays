@@ -1,6 +1,8 @@
 #include <iostream>
 #include <Windows.h>
 
+//  !!!! NEED TO FIX:  'number_of_shifts' - identifier not found & undeclared  @  909'th  line !!!!
+
 const int ROWS = 5;
 const int COLS = 8;
 
