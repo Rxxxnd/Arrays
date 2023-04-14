@@ -1,10 +1,11 @@
 #include<iostream>
 #include "constans.h"
 #include "FillRand.h"
-#include "Print.h"
-#include "Statistics.h"
-#include "Sorting.h"
-#include "Shifts.h"
+#include "Print.cpp"
+#include "Statistics.cpp"
+#include "Sorting.cpp"
+#include "Shifts.cpp"
+
 
 void main()
 {

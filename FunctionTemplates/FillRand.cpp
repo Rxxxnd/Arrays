@@ -1,3 +1,4 @@
+#include<iostream>
 #include "constans.h"
 #include "FillRand.h"
 
